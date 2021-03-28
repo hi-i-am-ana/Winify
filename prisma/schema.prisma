@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  userId       Int           @id @default(autoincrement())
+  stravaUserId Int           @unique
+  email        String        @unique @db.VarChar(50)
+  lastname     String        @db.VarChar(50)
+  firstname    String        @db.VarChar(50)
+  password     String        @db.Char(60)
+  active       Boolean
+  activities   Activity[]
+  emailHash    EmailHash?
+  passwordHash PasswordHash?
+}
+
+model Activity {
+  activityId       Int      @id @default(autoincrement())
+  stravaActivityId Int
+  user             User     @relation(fields: [stravaUserId], references: [stravaUserId])
+  stravaUserId     Int
+  distance         Float
+  movingTime       Int
+  type             String
+  start_date       DateTime
+  start_date_local DateTime
+  timezone         String
+}
+
+model EmailHash {
+  hashId   Int      @id @default(autoincrement())
+  user     User     @relation(fields: [email], references: [email])
+  email    String   @unique @db.VarChar(50)
+  hash     String   @db.Char(60)
+  createAt DateTime @default(now()) @db.Timestamptz
+}
+
+model PasswordHash {
+  hashId   Int      @id @default(autoincrement())
+  user     User     @relation(fields: [email], references: [email])
+  email    String   @unique @db.VarChar(50)
+  hash     String   @db.Char(60)
+  createAt DateTime @default(now()) @db.Timestamptz
+}

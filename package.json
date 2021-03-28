@@ -1,0 +1,43 @@
+{
+  "name": "strava_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "seed_tables": "psql -h localhost -d strava_app -f sql/seed_tables.sql",
+    "start": "node -r dotenv/config index.js",
+    "dev": "nodemon -r dotenv/config -e js,css index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hi-i-am-ana/strava_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hi-i-am-ana/strava_app/issues"
+  },
+  "homepage": "https://github.com/hi-i-am-ana/strava_app#readme",
+  "dependencies": {
+    "@prisma/client": "^2.19.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.5.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "pg": "^8.5.1",
+    "pg-promise": "^10.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "prisma": "^2.19.0"
+  }
+}
