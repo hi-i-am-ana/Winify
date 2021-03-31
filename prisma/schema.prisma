@@ -11,13 +11,20 @@ generator client {
 }
 
 model User {
-  userId       Int           @id @default(autoincrement())
-  stravaUserId Int           @unique
-  email        String        @unique @db.VarChar(50)
-  lastname     String        @db.VarChar(50)
-  firstname    String        @db.VarChar(50)
-  password     String        @db.Char(60)
-  active       Boolean
+  userId   Int     @id @default(autoincrement())
+  email    String  @unique @db.VarChar(50)
+  password String  @db.Char(60)
+  active   Boolean @default(false)
+
+  stravaUserId      BigInt? @unique
+  lastname          String? @db.VarChar(50)
+  firstname         String? @db.VarChar(50)
+  profilePictureUrl String?
+
+  stravaAccessToken    String?
+  stravaAcTokExpiresAt DateTime?
+  stravaRefreshToken   String?
+
   activities   Activity[]
   emailHash    EmailHash?
   passwordHash PasswordHash?
@@ -25,14 +32,14 @@ model User {
 
 model Activity {
   activityId       Int      @id @default(autoincrement())
-  stravaActivityId Int
+  stravaActivityId BigInt   @unique
   user             User     @relation(fields: [stravaUserId], references: [stravaUserId])
-  stravaUserId     Int
+  stravaUserId     BigInt
   distance         Float
   movingTime       Int
   type             String
-  start_date       DateTime
-  start_date_local DateTime
+  startDate        DateTime
+  startDateLocal   DateTime
   timezone         String
 }
 

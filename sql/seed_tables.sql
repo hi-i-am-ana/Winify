@@ -1,0 +1,3 @@
+INSERT into "User"(email, password, active, "stravaUserId", lastname, firstname, "profilePictureUrl", "stravaAccessToken", "stravaAcTokExpiresAt", "stravaRefreshToken") 
+VALUES
+('ilya.levchenko@gmail.com', crypt('Gunsmoke&Lav1', gen_salt('bf')), true, 21388191, 'Levchenko', 'ILYA', 'https://graph.facebook.com/10200380135344057/picture?height=256\u0026width=256', 'a9a0ae6bed82a74a1e967833d57ffda559e5dce9', '2021-03-29T17:01:40Z', '81aff4a0e62d9528294b13f0a8134c2278e57661');
