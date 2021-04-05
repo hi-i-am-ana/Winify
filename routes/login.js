@@ -1,6 +1,6 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt'); // or bcryptjs???
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { host, port, stravaClient, accessSecret } = require('../config'); // clean up this!!!
 // Import shared validation function

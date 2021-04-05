@@ -2,21 +2,16 @@ const express = require('express');
 const path = require('path');
 
 const axios = require('axios');
-const fetch = require('node-fetch');
-
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 // const passport = require('passport');
 // const JwtStrategy = require('passport-jwt').Strategy;
 // const ExtractJwt = require('passport-jwt').ExtractJwt;
 const cookieParser = require('cookie-parser');
+const expressLayouts = require('express-ejs-layouts');
+const moment = require('moment');
 const cron = require('node-cron');
 const morgan = require('morgan');
-
-const moment = require('moment');
-moment().format(); 
-
-const prisma = new PrismaClient();
 
 const { port, stravaClient, stravaSecret } = require('./config');
 
@@ -26,88 +21,23 @@ const signupRouter = require('./routes/signup.js');
 const emailRouter = require('./routes/email.js');
 const passwordRouter = require('./routes/password.js');
 const profileRouter = require('./routes/profile.js');
+const dashboardRouter = require('./routes/dashboard.js');
+const challengesRouter = require('./routes/challenges.js');
 const homeRouter = require('./routes/home.js');
 
 const app = express();
+const prisma = new PrismaClient();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(expressLayouts);
 app.use(morgan('dev'));  // static routes won't be logged if logger is instantiated after static routes
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-// TODO: Create const current/previous, type, period and use them in routes 'challenge/current/month/run/distance'
-app.get('/challenge/current/month/run/distance', (req, res) => {
-  const currentMonthStart = moment().startOf('month').format();
-  prisma.activity.findMany({
-    where: {
-      // type: 'Run',
-      startDateLocal: {
-        gte: currentMonthStart,
-        // TODO: Do I need to add lt midnight today?
-      }
-    },
-    select: {
-      stravaUserId: true,
-      distance: true,
-      movingTime: true,
-      type: true,
-    }
-  })
-  .then(activities => {
-    // console.log(activities)
-    let users = []
-    activities.forEach(activity => {
-      const stravaUserId = activity.stravaUserId
-      if (!users.some(user => user === stravaUserId)) {
-        users.push(stravaUserId)
-      };
-    });
-    // console.log(users)
-    let results = [];
-    users.forEach(user => {
-      let distance = 0;
-      activities.forEach(activity => {
-        if (activity.stravaUserId === user) {
-          distance += activity.distance;
-        };
-      });
-      results.push({user: user, distance: distance})
-    });
-    // console.log(results)
-    results.sort((a, b) => b.distance - a.distance)
-    // console.log(results)
-    results.splice(3)
-    const arrayOfSelects = [];
-    results.forEach((result, index) => {
-      const select = 
-        prisma.user.findUnique({
-          where: {
-            stravaUserId: result.user
-          },
-          select: {
-            lastname: true,
-            firstname: true,
-            profilePictureUrl: true
-          }
-        })
-      arrayOfSelects.push(select)
-    })
-    Promise.all(arrayOfSelects)
-    .then((arrayOfUsers) => {
-      arrayOfUsers.forEach((user, index) => {
-        results[index].lastname = user.lastname;
-        results[index].firstname = user.firstname;
-        results[index].profilePictureUrl = user.profilePictureUrl;
-      });
-      results.forEach((result, index) => {
-        delete results[index].user;
-      })
-      console.log(results)
-    });
-  });
-});
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('layout extractScripts', true);
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
@@ -115,6 +45,8 @@ app.use('/login', loginRouter);
 // app.use('/email', emailRouter);
 // app.use('/password', passwordRouter);
 app.use('/profile', profileRouter);
+app.use('/dashboard', dashboardRouter);
+app.use('/challenges', challengesRouter);
 app.use('/', homeRouter);
 
 // Add route for handling 404 requests - unavailable routes (should be in the end)
@@ -128,13 +60,14 @@ app.use((req, res) => {
 const getActivities = (stravaAccessToken) => {
   // TODO: set dates (before and after) and number of activities
   console.log(stravaAccessToken)
-  axios.get(`https://www.strava.com/api/v3/athlete/activities?per_page=5`, {
+  axios.get(`https://www.strava.com/api/v3/athlete/activities?per_page=10`, {
     headers: {
       Authorization: `Bearer ${stravaAccessToken}`
     }
   })
   .then(response => {
     response.data.forEach((activity, index) => {
+      // TODO: Filter only Run, Ride, Swim and Walk
       // Check if activity already exists
       prisma.activity.findUnique({
         where: {
@@ -150,6 +83,10 @@ const getActivities = (stravaAccessToken) => {
               stravaUserId: activity.athlete.id,
               distance: activity.distance,
               movingTime: activity.moving_time,
+              elapsedTime: activity.elapsed_time,
+              elevation: activity.total_elevation_gain,
+              averageSpeed: activity.average_speed,
+              averagePace: activity.moving_time / activity.distance,
               type: activity.type,
               startDate: activity.start_date,
               startDateLocal: activity.start_date_local,
@@ -166,7 +103,7 @@ const getActivities = (stravaAccessToken) => {
 
 // Find users, for which access token has to be updated (<= 1 hour left)
 // Make API request to get activities of all authorised users for the last day
-cron.schedule('54 21 * * *', () => {
+cron.schedule('43 23 * * *', () => {
   // TODO: Change to 1 hour
   prisma.user.findMany({
     // TODO: What will happen if user deauthorise themselves from settings in Strava and still has StravaID in my app?
@@ -210,6 +147,3 @@ cron.schedule('54 21 * * *', () => {
 app.listen(port, () =>
   console.log(`Server is listening on localhost:${port}\n`)
 );
-
-// const now = moment().startOf('month').format()
-// console.log(now)

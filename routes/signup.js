@@ -2,7 +2,7 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt'); // or bcryptjs???
+const bcrypt = require('bcrypt');
 
 const { host, port, gmailhost, gmailport, gmailuser, gmailpassword, stravaClient, accessSecret} = require('../config'); // clean up this!!!
 // Import shared validation function
