@@ -9,12 +9,6 @@ const validation = require('../public/js/shared_login_validation.js');
 const router = express.Router();
 const prisma = new PrismaClient();
 
-// GET route for login page
-// router.get('/', loggedInCheck, (req, res) => res.render('pages/login', {
-//   title: 'Login | TODO',
-//   currentUser: req.session.user,
-// }));
-
 // POST route for login
 router.post('/', (req, res) => {
   let validationParams = {
@@ -79,7 +73,7 @@ router.post('/', (req, res) => {
       });
     };
   }).catch((error) => {
-    res.json({ok: false, error: error.message});
+    res.json({ ok: false, error: error.message });
   });
 });
 

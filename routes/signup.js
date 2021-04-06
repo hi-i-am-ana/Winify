@@ -4,24 +4,12 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 
-const { host, port, gmailhost, gmailport, gmailuser, gmailpassword, stravaClient, accessSecret} = require('../config'); // clean up this!!!
+const { host, port, gmailhost, gmailport, gmailuser, gmailpassword} = require('../config');
 // Import shared validation function
 const validation = require('../public/js/shared_signup_validation.js');
 
 const router = express.Router();
 const prisma = new PrismaClient();
-
-// GET route for signup page
-// router.get('/', (req, res) => {
-//   const userId = 1;
-//   res.redirect(`https://www.strava.com/oauth/authorize?client_id=${stravaClient}&response_type=code&redirect_uri=http://${host}:${port}&approval_prompt=force&state=${userId}&scope=activity:read`);
-// });
-
-// GET route for signup page
-// router.get('/', loggedInCheck, (req, res) => res.render('pages/signup', {
-//   title: 'Sign Up | TODO',
-//   currentUser: req.session.user,
-// }));
 
 // POST route for signup
 router.post('/', (req, res) => {
@@ -98,11 +86,11 @@ router.post('/', (req, res) => {
               }
             });
             const mailOptions = {
-              from: '"STRAVA APP" <hi.i.am.anastasia@gmail.com>',
+              from: '"WINIFY" <hi.i.am.anastasia@gmail.com>',
               to: `${user.email}`,
-              subject: 'Please confirm your email address for STRAVA APP',
+              subject: 'Please confirm your email address for WINIFY',
               html: `
-              <h3>Thank you for creating your account on STRAVA APP</h3>
+              <h3>Thank you for creating your account on WINIFY</h3>
               <p>Please confirm your email address:</p>
               <a href="http://${host}:${port}/email/${emailHash.hash}">http://${host}:${port}/email/${emailHash.hash}</a>
               `
@@ -111,9 +99,8 @@ router.post('/', (req, res) => {
               if (error) {
                 res.json({ok: false, error: error.message});
               } else {
-                // TODO: ?????? Redirect from frontend???
-                // res.json({ok: true});
-                res.redirect(`https://www.strava.com/oauth/authorize?client_id=${stravaClient}&response_type=code&redirect_uri=http://${host}:${port}&approval_prompt=force&state=${user.userId}&scope=activity:read`);
+                console.log('signup route - email sent')
+                res.json({ok: true, userId: user.userId});
               };
             });
           }).catch((error) => {

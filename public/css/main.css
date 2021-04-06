@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+/* html {
+  scroll-behavior: auto !important;
+} */
+
+body {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.main-container {
+  min-height: 100vh;
+}
+
+.blurred {
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.form-alert {
+  display: none;
+  color: red;
+  font-size: 0.85rem;
+}
+
+legend {
+  font-size: inherit !important;
+}
+
+.alert {
+  padding: 0 !important;
+}
+
+.change-todo-status-button {
+  display: none;
+}
+
+.modal1 {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding: 50px 50px;
+  background-color: #fffff4;
+  display: none;
+  transition: 0.5s;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 35%;
+  min-width: 25%;
+  max-width: 410px;
+}
+
+.password-forgot-email {
+  color: violet
+}
+
+.red-border {
+  border: solid 1px red !important;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none !important;
+}

@@ -16,13 +16,13 @@ const morgan = require('morgan');
 const { port, stravaClient, stravaSecret } = require('./config');
 
 const loginRouter = require('./routes/login.js');
-const logoutRouter = require('./routes/logout.js');
 const signupRouter = require('./routes/signup.js');
 const emailRouter = require('./routes/email.js');
 const passwordRouter = require('./routes/password.js');
 const profileRouter = require('./routes/profile.js');
 const dashboardRouter = require('./routes/dashboard.js');
 const challengesRouter = require('./routes/challenges.js');
+const isAuthorisedRouter = require('./routes/is_authorised.js');
 const homeRouter = require('./routes/home.js');
 
 const app = express();
@@ -41,12 +41,12 @@ app.set('layout extractScripts', true);
 
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
-// app.use('/logout', logoutRouter);
 // app.use('/email', emailRouter);
-// app.use('/password', passwordRouter);
+app.use('/password', passwordRouter);
 app.use('/profile', profileRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/challenges', challengesRouter);
+app.use('/is_authorised', isAuthorisedRouter);
 app.use('/', homeRouter);
 
 // Add route for handling 404 requests - unavailable routes (should be in the end)
@@ -86,7 +86,6 @@ const getActivities = (stravaAccessToken) => {
               elapsedTime: activity.elapsed_time,
               elevation: activity.total_elevation_gain,
               averageSpeed: activity.average_speed,
-              averagePace: activity.moving_time / activity.distance,
               type: activity.type,
               startDate: activity.start_date,
               startDateLocal: activity.start_date_local,
