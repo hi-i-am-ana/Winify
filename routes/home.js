@@ -72,7 +72,7 @@ router.get('/', (req, res) => {
               })
               .then(() => {
                 // TODO: Promise all here, at the moment it is executed for each activity
-                console.log('success')
+                console.log('home route - activity created')
                 res.render('pages/home', {
                   title: 'Home | WINIFY',
                   host: host,

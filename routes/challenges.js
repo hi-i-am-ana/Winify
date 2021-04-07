@@ -125,7 +125,7 @@ const determineResultsSingle = (res, periodStart, periodEnd, type, criteria) => 
       delete activity.user;
     })
     // Convert criteria value units for display
-    convertUnits(activities, criteria);
+    convertUnits(activities, type, criteria);
     // Convert bigint (stravaUserId) into number
     activities.forEach(activity => {
       activity.stravaUserId = Number(activity.stravaUserId);
@@ -177,7 +177,7 @@ const convertUnits = (activities, type, criteria) => {
     });
   } else if (criteria === 'averagePace') {
     activities.forEach(activity => {
-      if (type === 'Run') {
+      if (type === 'Run' || type === 'Walk') {
         // Convert pace from sec/m to min/km
         const paceQuotient = Math.floor(activity.averagePace * 1000 / 60);
         const paceRemainder = Math.round(activity.averagePace * 1000 % 60);
