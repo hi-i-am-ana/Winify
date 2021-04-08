@@ -7,13 +7,14 @@ $.ajax({
 })
 .then((response) => {
   if (response.message === 'no token' || response.message === 'ivalid token') {
-    $('.nav-login-link').removeClass('display-none');
-    $('.nav-logout-link').addClass('display-none');
-    $('.nav-profile-link').addClass('display-none');
+    $('.navbar-login-link').removeClass('display-none');
+    $('.navbar-logout-link').addClass('display-none');
+    $('.navbar-profile-link').addClass('display-none');
   } else if (response.userId) {
-    $('.nav-login-link').addClass('display-none');
-    $('.nav-logout-link').removeClass('display-none');
-    $('.nav-profile-link').removeClass('display-none');
+    $('.navbar-login-link').addClass('display-none');
+    $('.navbar-logout-link').removeClass('display-none');
+    $('.navbar-profile-link').removeClass('display-none');
+    $('.navbar-profile-image').attr('src', response.profilePictureUrl)
   };
 })
 .catch(error => {

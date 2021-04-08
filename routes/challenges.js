@@ -23,9 +23,9 @@ const determineResultsTotal = (res, periodStart, periodEnd, type, criteria) => {
     where: {
       type: type,
       startDateLocal: {
-        // gte: periodStart,
+        gte: periodStart,
         // TODO: Change this for current week and month after implementing webhooks
-        // lte: periodEnd
+        lte: periodEnd
       }
     },
     sum: sum
@@ -93,9 +93,9 @@ const determineResultsSingle = (res, periodStart, periodEnd, type, criteria) => 
     where: {
       type: type,
       startDateLocal: {
-        // gte: periodStart,
+        gte: periodStart,
         // TODO: Change this for current week and month after implementing webhooks
-        // lte: periodEnd
+        lte: periodEnd
       }
     },
     select: select,

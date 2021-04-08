@@ -1,11 +1,11 @@
 <div class="main-container">
   <div class="side-nav-container">
     <div class="logo-container">
-      <a class="logo" href="/"><i class="fas fa-award"></i> WINIFY</a>
+      <a class="logo" href="/"><i class="fas fa-award"></i> WINIF<span>Y</span></a>
     </div>
 
     <!-- Side navigation bar -->
-    <div class="side-nav">
+    <nav class="side-nav">
       <ul>
         <li class="side-nav-link-container">
           <a class="side-nav-link run-nav-link">
@@ -49,74 +49,93 @@
           </a>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
 
   <!-- Challenges container -->
   <div class="challenges-container">
     <h1>Champion Board</h1>
-    <div class="criteria-challenges-container distance-challenges-container">
-      <div class="challenge-card distance-total-challenge-card">
+    <nav class="period-nav">
+      <ul>
+        <li class="period-nav-link-container">
+          <a class="period-nav-link clicked-period-nav-link current-week-nav-link">CURRENT WEEK</a>
+        </li>
+        <li class="period-nav-link-container">
+          <a class="period-nav-link last-week-nav-link">LAST WEEK</a>
+        </li>
+        <li class="period-nav-link-container">
+          <a class="period-nav-link current-month-nav-link">CURRENT MONTH</a>
+        </li>
+        <li class="period-nav-link-container">
+          <a class="period-nav-link last-month-nav-link">LAST MONTH</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="challenges">
+      <div class="criteria-challenges-container distance-challenges-container">
+        <!-- <div class="challenge-card distance-total-challenge-card">
 
+        </div>
+        <div class="challenge-card distance-single-challenge-card">
+
+        </div> -->
       </div>
-      <div class="challenge-card distance-single-challenge-card">
 
+      <div class="criteria-challenges-container time-challenges-container">
+        <!-- <div class="challenge-card time-total-challenge-card">
+
+        </div>
+
+        <div class="challenge-card time-single-challenge-card">
+          
+        </div>  -->
       </div>
-    </div>
 
-    <div class="criteria-challenges-container time-challenges-container">
-      <div class="challenge-card time-total-challenge-card">
+      <div class="criteria-challenges-container speed-challenges-container">
+        <!-- <div class="challenge-card speed-total-challenge-card">
 
-      </div>
-
-      <div class="challenge-card time-single-challenge-card">
+        </div>
         
-      </div> 
-    </div>
-
-    <div class="criteria-challenges-container speed-challenges-container">
-      <div class="challenge-card speed-total-challenge-card">
-
+        <div class="challenge-card speed-single-challenge-card">
+          
+        </div> -->
       </div>
-      
-      <div class="challenge-card speed-single-challenge-card">
+
+      <div class="criteria-challenges-container elevation-challenges-container">
+        <!-- <div class="challenge-card elevation-total-challenge-card">
+
+        </div>
         
+        <div class="challenge-card elevation-single-challenge-card">
+          
+        </div>    -->
       </div>
-    </div>
-
-    <div class="criteria-challenges-container elevation-challenges-container">
-      <div class="challenge-card elevation-total-challenge-card">
-
-      </div>
-      
-      <div class="challenge-card elevation-single-challenge-card">
-        
-      </div>   
     </div>
   </div>
 
   <div class="side-info-container">
     <!-- Navbar -->
-    <nav>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"><i class="fas fa-home"></i></a>
+    <nav class="navbar">
+      <ul class="">
+        <li class="navbar-item">
+          <a href="/" class="navbar-link navbar-home-link"><i class="fas fa-home"></i></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active nav-profile-link" aria-current="page"><i class="fas fa-user-circle"></i><i class="far fa-user-circle"></i></a>
+        <li class="navbar-item">
+          <a href="/profile" class="navbar-link navbar-profile-link"><img class="navbar-profile-image"></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active nav-login-link" aria-current="page"><i class="fas fa-sign-in-alt"></i></a>
+        <li class="navbar-item">
+          <a class="navbar-link navbar-login-link"><i class="fas fa-sign-in-alt"></i></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link nav-logout-link"><i class="fas fa-sign-out-alt"></i></a>
+        <li class="navbar-item">
+          <a class="navbar-link navbar-logout-link"><i class="fas fa-sign-out-alt"></i></a>
         </li>
       </ul>
     </nav>
 
     <!-- Side info -->
     <div class="side-info">
-
+      <h2 class="side-info-title"></h2>
+      <div class="side-info-content"></div>
     </div>
   </div>
 </div>

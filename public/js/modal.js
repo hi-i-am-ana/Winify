@@ -39,7 +39,7 @@ const loginOpen = () => {
   $('.main-container').addClass('blurred');
 };
 
-$('.login-link, .nav-login-link').click(loginOpen);
+$('.login-link, .navbar-login-link').click(loginOpen);
 $('.signup-link').click(signupOpen);
 $('.password-forgot-link').click(forgotPasswordOpen);
 $('.close-modal-button').click(modalClose);
