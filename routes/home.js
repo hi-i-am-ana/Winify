@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 router.get('/', (req, res) => {
   if (Object.keys(req.query).length === 0) {
     res.render('pages/home', {
-      title: 'Home | WINIFY',
+      title: 'WINIFY',
       host: host,
       port: port,
       stravaClient: stravaClient,
@@ -74,7 +74,7 @@ router.get('/', (req, res) => {
                 // TODO: Promise all here, at the moment it is executed for each activity
                 console.log('home route - activity created')
                 res.render('pages/home', {
-                  title: 'Home | WINIFY',
+                  title: 'WINIFY',
                   host: host,
                   port: port,
                   stravaClient: stravaClient,

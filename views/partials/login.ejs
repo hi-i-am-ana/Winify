@@ -1,12 +1,12 @@
-<div class="modal1 login-modal">
+<div class="modal login-modal">
   <i class="far fa-times-circle close-modal-button"></i>
   <div class="login-container">
-    <div class="text-center">
-      <h2>Log In</h2>
+    <div class="">
+      <h2>Login</h2>
     </div>
 
     <form id="login-form" method="" action="" novalidate>
-      <div class="mb-3">
+      <div class="form-input">
         <label for="login-email" class="form-label">Email Address *</label>
         <input type="email" class="form-control" id="login-email" name="email">
         <div class="form-alert" id="login-email-empty-alert">Please enter your email address</div>
@@ -15,7 +15,7 @@
         <div class="form-alert" id="login-email-unconfirmed-alert">Please confirm your email address</div>
       </div>
 
-      <div class="mb-3">
+      <div class="form-input">
         <label for="login-password" class="form-label">Password *</label>
         <input type="password" class="form-control" id="login-password" name="password">
         <div class="form-alert" id="login-password-empty-alert">Please enter your password</div>
@@ -23,12 +23,12 @@
         <div class="form-alert" id="login-password-incorrect-alert">You have entered incorrect password</div>
       </div>
 
-      <button class="btn btn-primary shadow d-block mx-auto w-50" type="submit">Log In</button>
+      <button class="form-button" type="submit">Login</button>
     </form>
 
-    <div class="mt-3 text-center">
-        <p>Don't have an account yet? <a class="signup-link">Sign Up</a></p>
-        <p><a class="password-forgot-link">Forgot your password?</a></p>
+    <div class="">
+        <p class="modal-text">Don't have an account yet? <a class="signup-link">Sign Up</a></p>
+        <p class="modal-text"><a class="password-forgot-link">Forgot your password?</a></p>
     </div>
   </div>
 </div>

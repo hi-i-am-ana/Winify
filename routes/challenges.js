@@ -893,7 +893,7 @@ router.get('/last/week/ride/total/elevation', (req, res) => {
   determineResultsTotal(res, periodStart, periodEnd, 'Ride', 'elevation');
 });
 
-router.get('/last/week/ride/totalaverage_speed', (req, res) => {
+router.get('/last/week/ride/total/average_speed', (req, res) => {
   const periodStart = lastWeekStart();
   const periodEnd = lastWeekEnd();
   determineResultsTotal(res, periodStart, periodEnd, 'Ride', 'averageSpeed');

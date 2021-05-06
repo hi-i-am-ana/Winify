@@ -38,6 +38,7 @@ a {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 button:focus {
@@ -71,6 +72,9 @@ ul {
 
 .logo {
   color: #3a4c9c;
+  font-size: 2rem;
+  /* font-family: 'Raleway', sans-serif; */
+  font-weight: 600;
 }
 
 .logo > span {
@@ -109,7 +113,8 @@ ul {
 
 .period-nav {
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  color: #3a4c9c;
   margin-bottom: 2rem;
 }
 
@@ -139,7 +144,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #ffff;
   /* box-shadow: 0 3px 20px 0 rgba(15, 32, 16, 0.37); */
   font-size: 1.5rem;
@@ -155,7 +160,7 @@ ul {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .winner-container {
@@ -163,6 +168,7 @@ ul {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 0.3rem;
 }
 
 .winner-container > i {
@@ -178,6 +184,7 @@ ul {
 
 .winner-image {
   width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   /* margin-right: 1rem; */
 }
@@ -244,6 +251,11 @@ ul {
   border: #e5bb3f solid 3px;
 }
 
+.side-info {
+  margin: auto;
+  width: 80%;
+}
+
 .side-info-title {
   margin-bottom: 2rem;
 }
@@ -251,24 +263,9 @@ ul {
 .side-info-content {
   display: flex;
   flex-direction: column;
-  width: 80%;
 }
 
-.form-alert {
-  display: none;
-  color: red;
-  font-size: 0.85rem;
-}
-
-/* legend {
-  font-size: inherit !important;
-}
-
-.alert {
-  padding: 0 !important;
-} */
-
-.modal1 {
+.modal {
   z-index: 1;
   position: fixed;
   top: 50%;
@@ -276,30 +273,102 @@ ul {
   transform: translate(-50%, -50%);
   max-height: 80vh;
   overflow-y: scroll;
-  padding: 50px 50px;
-  background-color: #fffff4;
+  padding: 30px 60px;
+  background-color: #ffff;
   display: none;
   transition: 0.5s;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  width: 35%;
+  border-radius: 10px;
+  width: 30%;
   min-width: 25%;
   max-width: 410px;
 }
 
+.modal h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: initial;
+  margin-bottom: 2rem;
+  color: orange;
+  font-family: 'Questrial', sans-serif;
+}
+
+.form-input {
+  margin-bottom: 2rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 0 1rem 0;
+  /* margin-top: 1rem; */
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  border-bottom: orange solid 2px;
+  color: orange;
+}
+
+.form-label {
+  color: #909090;
+}
+
+.form-control:focus {
+  outline: 0;
+  /* border-bottom: orange solid 2px; */
+}
+
+.modal-text {
+  color: #5d5d5d;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.login-link, .signup-link, .password-forgot-link {
+  text-decoration: underline;
+  color: orange
+}
+
 .password-forgot-email {
-  color: violet
+  color: #3a4c9c;
+}
+
+.form-alert {
+  display: none;
+  color: red;
+  font-size: 1.3rem;
+}
+
+.form-button {
+  display: block;
+  width: 100%;
+  padding: 1.2rem 5rem;
+  background-color: orange;
+  /* box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3); */
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 20px;
+  color: #ffff;
+}
+
+.form-button:hover {
+  background-color: #E28D00;  
+}
+
+.form-button:active {
+  background-color: #3a4c9c;
 }
 
 .blurred {
   filter: blur(1px);
+  opacity: 0.5;
   pointer-events: none;
   user-select: none;
   overflow: hidden;
 }
 
 .red-border {
-  border: solid 1px red !important;
+  border-bottom: solid 1px red;
+  margin-bottom: 0.5rem;
 }
 
 .display-block {
@@ -307,5 +376,5 @@ ul {
 }
 
 .display-none {
-  display: none !important;
+  display: none;
 }

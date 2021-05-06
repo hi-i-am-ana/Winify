@@ -60,7 +60,7 @@ app.use((req, res) => {
 const getActivities = (stravaAccessToken) => {
   // TODO: set dates (before and after) and number of activities
   console.log(stravaAccessToken)
-  axios.get(`https://www.strava.com/api/v3/athlete/activities?per_page=10`, {
+  axios.get(`https://www.strava.com/api/v3/athlete/activities?per_page=200`, {
     headers: {
       Authorization: `Bearer ${stravaAccessToken}`
     }
@@ -102,7 +102,7 @@ const getActivities = (stravaAccessToken) => {
 
 // Find users, for which access token has to be updated (<= 1 hour left)
 // Make API request to get activities of all authorised users for the last day
-cron.schedule('43 23 * * *', () => {
+cron.schedule('43 22 * * *', () => {
   // TODO: Change to 1 hour
   prisma.user.findMany({
     // TODO: What will happen if user deauthorise themselves from settings in Strava and still has StravaID in my app?

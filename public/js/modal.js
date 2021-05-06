@@ -1,5 +1,5 @@
 const modalClose = () => {
-  $('.modal1').removeClass('display-block');
+  $('.modal').removeClass('display-block');
   clearLoginValidation();
   clearSignupValidation();
   clearPasswordForgotValidation();

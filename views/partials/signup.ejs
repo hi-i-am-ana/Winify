@@ -1,12 +1,12 @@
-<div class="modal1 signup-modal">
+<div class="modal signup-modal">
   <i class="far fa-times-circle close-modal-button"></i>
   <div class="signup-container">
-    <div class="text-center">
+    <div class="">
       <h2>Sign Up</h2>
     </div>
 
     <form id="signup-form" method="" action="" novalidate>
-      <div class="mb-3">
+      <div class="form-input">
         <label for="signup-email" class="form-label">Email Address*</label>
         <input type="email" class="form-control" id="signup-email" name="email">
         <div class="form-alert" id="signup-email-empty-alert">Please enter your email address</div>
@@ -14,24 +14,24 @@
         <div class="form-alert" id="signup-email-exists-alert">User with this email address already exists</div>
       </div>
 
-      <div class="mb-3">
+      <div class="form-input">
         <label for="signup-password" class="form-label">Password *</label>
         <input type="password" class="form-control" id="signup-password" name="password">
         <div class="form-alert" id="signup-password-empty-alert">Please enter your password</div>
         <div class="form-alert" id="signup-password-invalid-alert">Password has invalid format</div>
-        <div class="form-text" id="signup-password-info">At least: 8 chars, one lower and one upper alpha chars, one number, one special char</div>
+        <!-- <div class="form-text" id="signup-password-info">At least: 8 chars, one lower and one upper alpha chars, one number, one special char</div> -->
       </div>
 
-      <div class="mb-3">
+      <div class="form-input">
         <label for="signup-confirm-password" class="form-label">Confirm Password *</label>
         <input type="password" class="form-control" id="signup-confirm-password" name="confirmPassword">
         <div class="form-alert" id="signup-confirm-password-empty-alert">Please confirm your password</div>
         <div class="form-alert" id="signup-confirm-password-match-alert">Passwords do not match</div>
       </div>
 
-      <button class="btn btn-primary shadow d-block mx-auto w-50" type="submit">Sign Up</button>
+      <button class="form-button" type="submit">Sign Up</button>
     </form>
 
-    <p class="mt-3 text-center">Already have an account? <a class="login-link">Login</a></p>
+    <p class="modal-text">Already have an account? <a class="login-link">Login</a></p>
   </div>
 </div>
