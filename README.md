@@ -11,4 +11,4 @@ STRAVA API allows to access this data. To get data on athletes, the app requests
 
 In my app I use this data to create different kind of challenges in which my users will be able to participate.
 
-(https://github.com/hi-i-am-ana/Winify/tree/master/public/assets/winify.png)
+![](/public/assets/winify.png)
