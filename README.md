@@ -1,9 +1,14 @@
 # work in progress
-# strava_app
+# Winify
 My goal was to create an app that can be used by people who exercise and that will encourage them to exercise more.
+
 This app uses Strava API.
+
 Strava is an internet service for tracking peoples’ exercise which incorporates social network features.
 It is mostly used for cycling and running using GPS data, but also can be user for many other activities.
-STRAVA API allows to access this data.
+
+STRAVA API allows to access this data. To get data on athletes, the app requests athletes to sign in with Strava, and grant the app certain permissions using OAuth 2.0.
+
 In my app I use this data to create different kind of challenges in which my users will be able to participate.
-To get data on athletes, the app requests athletes to sign in with Strava, and grant the app certain permissions using OAuth 2.0.
+
+(https://github.com/hi-i-am-ana/Winify/tree/master/public/assets/winify.png)
