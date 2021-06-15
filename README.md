@@ -1,4 +1,3 @@
-# work in progress
 # Winify
 
 > **Work in progress:** This project hasn'n been finished yet
