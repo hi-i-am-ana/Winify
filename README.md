@@ -1,5 +1,8 @@
 # work in progress
 # Winify
+
+> **Work in progress:** This project hasn'n been finished yet
+
 My goal was to create an app that can be used by people who exercise and would encourage them to exercise more.
 
 This app uses Strava API.
