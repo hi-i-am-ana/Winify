@@ -23,10 +23,10 @@ In my app I use this data to create different kind of challenges in which my use
 
 ## Demo
 
-![home]()
+![home](https://github.com/hi-i-am-ana/Winify/blob/main/public/assets/home.png)
 
-![signup]()
+![signup](https://github.com/hi-i-am-ana/Winify/blob/main/public/assets/signup.png)
 
-![login]()
+![login](https://github.com/hi-i-am-ana/Winify/blob/main/public/assets/login.png)
 
-![forgot password]()
+![forgot password](https://github.com/hi-i-am-ana/Winify/blob/main/public/assets/forgot_password.png)
