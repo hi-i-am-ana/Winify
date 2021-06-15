@@ -23,4 +23,10 @@ In my app I use this data to create different kind of challenges in which my use
 
 ## Demo
 
-![](/public/assets/winify.png)
+![home]()
+
+![signup]()
+
+![login]()
+
+![forgot password]()
